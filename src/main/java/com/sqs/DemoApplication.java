@@ -6,6 +6,7 @@ import org.springframework.cloud.aws.context.annotation.ConditionalOnAwsCloudEnv
 import org.springframework.cloud.aws.messaging.config.annotation.EnableSqs;
 
 @EnableSqs
+//Exclude the spring cloud auto configuration classes
 @SpringBootApplication(exclude = {
         org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration.class,
         org.springframework.cloud.aws.autoconfigure.context.ContextCredentialsAutoConfiguration.class,

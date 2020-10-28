@@ -16,11 +16,14 @@ public class SQSConfig {
     @Value("${cloud.aws.region.static}")
     private String region;
 
-    @Value("${cloud.aws.credentials.access-key}")
+    @Value("${AWS_ACCESS_KEY_ID}")
     private String awsAccessKey;
 
-    @Value("${cloud.aws.credentials.secret-key}")
+    @Value("${AWS_SECRET_ACCESS_KEY}")
     private String awsSecretKey;
+
+    @Value("${SQS_ENDPOINT}")
+    private String endpoint;
 
     @Bean
     public QueueMessagingTemplate queueMessagingTemplate() {
@@ -32,7 +35,7 @@ public class SQSConfig {
     public AmazonSQSAsync amazonSQSAsync() {
         return AmazonSQSAsyncClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(new BasicAWSCredentials(awsAccessKey, awsSecretKey))).
-                        withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration("http://localhost:4566/",region))
+                        withEndpointConfiguration(new AwsClientBuilder.EndpointConfiguration(endpoint,region))
                 .build();
     }
 }

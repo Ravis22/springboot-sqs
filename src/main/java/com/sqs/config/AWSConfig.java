@@ -3,6 +3,9 @@ package com.sqs.config;
 import org.springframework.cloud.aws.context.annotation.ConditionalOnAwsCloudEnvironment;
 import org.springframework.context.annotation.Import;
 
+/**
+ * Enable configuration as per the need
+ */
 @ConditionalOnAwsCloudEnvironment
 @Import({
         org.springframework.cloud.aws.autoconfigure.context.ContextInstanceDataAutoConfiguration.class,
